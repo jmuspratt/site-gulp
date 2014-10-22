@@ -1,35 +1,9 @@
-//	-------------
-//	Pseudo-compass
 
-	@mixin transition ($val) {
-	    -webkit-transition: $val;
-	    -moz-transition: $val;
-	    -o-transition: $val;
-	    transition: $val;
-	}
-
-	
-	@mixin background-size($val) {
-	    -webkit-background-size: $val;
-	    -moz-background-size: $val;
-	    -o-background-size: $val;
-	    background-size: $val;
-	}
-	
-	// generic vendorize mixin
-	@mixin vendorize($name, $argument) {
-	  -webkit-#{$name}: #{$argument};
-	  -ms-#{$name}: #{$argument};
-	  -moz-#{$name}: #{$argument};
-	  -o-#{$name}: #{$argument};
-	  #{$name}: #{$argument};
-	}
-	
 //	-------------
 //	Type
 	
 	@mixin smooth 			{ -webkit-font-smoothing: antialiased; -moz-osx-font-smoothing: grayscale;}
- 	@mixin typefix {-webkit-backface-visibility: hidden;-moz-backface-visibility: hidden;-ms-backface-visibility: hidden;}
+ 	@mixin typefix 			{-webkit-backface-visibility: hidden;-moz-backface-visibility: hidden;-ms-backface-visibility: hidden;}
 	@mixin uc 				{text-transform:uppercase; letter-spacing:1px;}
 	@mixin lc 				{text-transform:lowercase; letter-spacing:0;}
 	@mixin untexttransform 	{text-transform:none; letter-spacing:0;}
@@ -81,10 +55,9 @@
 	}
 	
 //	Based on
-//	http://opticalcortex.com/the-end-of-sprites-the-rise-of-svg/
 	@mixin bg_image($filename, $type:svg) {
 		@if $type == 'svg' {
-			background-image: inline-image('#{$img_path}#{$filename}.svg', image/svg\+xml);
+			background-image: url('#{$img_path}#{$filename}.svg');
 			html.no-svg & {background-image: url('#{$img_path}#{$filename}.png');}	
 		}
 		@else {
@@ -102,36 +75,5 @@
 	 	zoom: 1;
 	 }
 	 
-	 
-//	Flexbox
- 	@mixin justify-content ($val) {
- 		-webkit-justify-content: $val;
- 		justify-content: $val;
- 	}
- 	@mixin align-items($val) {
- 		-webkit-align-items: $val;
- 		align-items: $val;
- 	}
- 	@mixin flex {
- 		display: -webkit-box;
- 		display: -moz-box;
- 		display: -ms-flexbox;
- 		display: -webkit-flex;
- 		display: flex;
- 	}
- 
 
-//	Animations
-	@mixin keyframes($name) {
-		@-webkit-keyframes #{$name} {@content; }
-		@-moz-keyframes #{$name} {@content;}
-		@-ms-keyframes #{$name} {@content;}
-		@keyframes #{$name} {@content;}
-	}
 
-	@mixin animation ($name, $duration: 1s, $delay: 0s, $iterations: 1, $direction: normal, $timing: ease, $fillmode: forwards) {
-		-webkit-animation: 	$name $duration $delay $iterations $direction $timing $fillmode ;
-		-moz-animation: 	$name $duration $delay $iterations $direction $timing $fillmode ;
-		-o-animation: 		$name $duration $delay $iterations $direction $timing $fillmode ;
-		animation: 			$name $duration $delay $iterations $direction $timing $fillmode ;
-	}

@@ -1,0 +1,30 @@
+
+@import "_vars";
+@import "_utilities";
+@import "_customresets";
+@import "_breakpointflags.scss";
+
+
+	body 	{font:12px/18px $sans; background:#eee;}
+
+	img 	{max-width:100%; display:block; border:0;}
+
+
+	.main-header, .main 			{padding:0 5%; max-width:1200px;margin:0 auto;}
+	.main-header 					{padding:20px 2%; }
+
+	
+	.main {
+		padding-top:20px;
+		
+	}
+	a {color: gray;}
+	
+	.main-header nav {
+		ul {list-style:none;;}
+		li {display:inline; margin-right:20px;}
+		
+		a 		{color:green; transition: color .5s linear;}
+		a:hover {color:blue;}
+	 }
+	 

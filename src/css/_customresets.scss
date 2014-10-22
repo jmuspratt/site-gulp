@@ -36,7 +36,7 @@
 		-webkit-border-radius:0;
 		background:transparent;
 		border-bottom:1px solid #fff;
-		@include transition(all .3s linear);
+		transition: all .3s linear;
 	}
 
 	
@@ -49,7 +49,7 @@
 		cursor:pointer;
 		font:500 12px/15px $sans;
 		min-width:240px;
-		@include transition(background .3s linear);
+		transition: background .3s linear;
 		&:hover {
 			background-color:gray;
 		}
@@ -66,16 +66,16 @@
 	}
 	
 
-	input::-webkit-input-placeholder 		{color: $gray; @include transition(all .5s linear);}
+	input::-webkit-input-placeholder 		{color: $gray; transition: all .5s linear;}
 	input:focus::-webkit-input-placeholder 	{color: $gray_light;}
 
  	/* Firefox 18- */	
-	input:-moz-placeholder 					{color: $gray; opacity:1; @include transition(all .5s linear); }
+	input:-moz-placeholder 					{color: $gray; opacity:1; transition: all .5s linear; }
 	input:focus:-moz-placeholder 			{color: $gray_light;  }
 	 /* Firefox 19+ */                  	
-	input::-moz-placeholder 				{color: $gray; opacity:1; @include transition(all .5s linear);}
+	input::-moz-placeholder 				{color: $gray; opacity:1; transition: all .5s linear;}
 	input:focus::-moz-placeholder 			{color: $gray_light;  }
                                         	
-	input:-ms-input-placeholder				{color: $gray; @include transition(all .5s linear);}
+	input:-ms-input-placeholder				{color: $gray; transition: all .5s linear}
 	input:focus:-ms-input-placeholder		{color: $gray_light;}
 

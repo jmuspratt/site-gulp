@@ -26,8 +26,8 @@ var Utilities = {
 //	+++++++++++++++++++++++++++++++++++++
 
 
-
 //	Animated Scrolling -------------------------------
+
 
 var AnimatedScrolling = {
 	settings: {
@@ -35,7 +35,7 @@ var AnimatedScrolling = {
 		speed: 1200
 	},
 	init: function() {
-		AnimatedScrolling.bind()
+		AnimatedScrolling.bind();
 	},
 	bind: function() {
 		AnimatedScrolling.settings.$animatables.click( function() {

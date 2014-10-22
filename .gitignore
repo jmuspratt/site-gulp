@@ -5,4 +5,4 @@ profile
 # other stuff
 .sass-cache/
 logs/
-- old/
+node_modules/
