@@ -1,6 +1,7 @@
 /*!
  * gulp
  * $ npm install gulp-ruby-sass gulp-autoprefixer gulp-minify-css gulp-jshint gulp-concat gulp-uglify gulp-imagemin gulp-notify gulp-rename gulp-livereload gulp-cache del --save-dev
+ * Adapted from http://markgoodyear.com/2014/01/getting-started-with-gulp/  
  */
 
 // Load plugins
@@ -15,19 +16,19 @@ var gulp = require('gulp'),
     concat = require('gulp-concat'),
     notify = require('gulp-notify'),
     cache = require('gulp-cache'),
-    livereload = require('gulp-livereload'),
+    // livereload = require('gulp-livereload'),
     del = require('del');
 
 // Styles
-gulp.task('css', function() {
-  return gulp.src(['src/css/screen.scss', 'src/css/screen-lt-ie9.scss'])
+gulp.task('styles', function() {
+  return gulp.src(['src/styles/screen.scss', 'src/styles/screen-lt-ie9.scss'])
     .pipe(sass({ style: 'expanded', }))
     .pipe(autoprefixer('last 2 version', 'safari 5', 'ie 8', 'ie 9', 'opera 12.1', 'ios 6', 'android 4'))
-    .pipe(gulp.dest('build/css'))
+    .pipe(gulp.dest('build/styles'))
     .pipe(rename({ suffix: '.min' }))
     .pipe(minifycss())
-    .pipe(gulp.dest('build/css'))
-    .pipe(notify({ message: 'CSS task complete' }));
+    .pipe(gulp.dest('build/styles'))
+    .pipe(notify({ message: 'Styles task complete' }));
 });
 
 // js
@@ -53,19 +54,19 @@ gulp.task('images', function() {
 
 // Clean
 gulp.task('clean', function(cb) {
-    del(['build/assets/css', 'build/assets/js', 'build/assets/img'], cb)
+    del(['build/assets/styles', 'build/assets/js', 'build/assets/img'], cb)
 });
 
 // Default task
 gulp.task('default', ['clean'], function() {
-    gulp.start('css', 'js', 'images');
+    gulp.start('styles', 'js', 'images');
 });
 
 // Watch
 gulp.task('watch', function() {
 
   // Watch .scss files
-  gulp.watch('src/css/**/*.scss', ['css']);
+  gulp.watch('src/styles/**/*.scss', ['styles']);
 
   // Watch .js files
   gulp.watch('src/js/**/*.js', ['js']);
@@ -74,9 +75,9 @@ gulp.task('watch', function() {
   gulp.watch('src/images/**/*', ['images']);
 
   // Create LiveReload server
-  livereload.listen();
+  // livereload.listen();
 
   // Watch any files in build/, reload on change
-  gulp.watch(['build/**']).on('change', livereload.changed);
+  // gulp.watch(['build/**']).on('change', livereload.changed);
 
 });
