@@ -33,7 +33,7 @@ gulp.task('styles', function() {
 
 // js
 gulp.task('js', function() {
-  return gulp.src(['src/js/jquery-1.11.0.min.js', 'src/js/**/*.js'])
+  return gulp.src(['src/js/jquery-1.11.0.min.js', 'src/js/**/*.js']) // load jquery first, then everything else
     // .pipe(jshint())
     // .pipe(jshint.reporter('default'))
     .pipe(concat('main.js'))
@@ -45,9 +45,10 @@ gulp.task('js', function() {
 });
 
 // Images
+// See https://www.npmjs.org/package/gulp-imagemin (optimizationLevel != JPG compression)
 gulp.task('images', function() {
   return gulp.src('src/images/**/*')
-    .pipe(cache(imagemin({ optimizationLevel: 3, progressive: false, interlaced: false })))
+    .pipe(cache(imagemin({ optimizationLevel: 3, progressive: false, interlaced: false }))) 
     .pipe(gulp.dest('build/images'))
     .pipe(notify({ message: 'Images task complete' }));
 });
