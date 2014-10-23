@@ -207,7 +207,6 @@ var TapHover = {
 
 
 
-
 //	+++++++++++++++++++++++++++++++++++++
 //	Get features based on <body> tag's data-features attribute, a space-separated string of the features necessary for that page. Based on http://viget.com/extend/javascript-execution-patterns-for-non-web-apps and http://stackoverflow.com/questions/359788/how-to-execute-a-javascript-function-when-i-have-its-name-as-a-string
 //	+++++++++++++++++++++++++++++++++++++

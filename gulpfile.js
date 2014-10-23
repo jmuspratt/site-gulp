@@ -1,6 +1,6 @@
 /*!
  * gulp
- * $ npm install gulp-ruby-sass gulp-autoprefixer gulp-minify-css gulp-jshint gulp-concat gulp-uglify gulp-imagemin gulp-notify gulp-rename gulp-livereload gulp-cache del --save-dev
+ * $ npm install gulp-header gulp-ruby-sass gulp-autoprefixer gulp-minify-css gulp-jshint gulp-concat gulp-uglify gulp-imagemin gulp-notify gulp-rename gulp-livereload gulp-cache del --save-dev
  * Adapted from http://markgoodyear.com/2014/01/getting-started-with-gulp/  
  */
 
@@ -17,7 +17,12 @@ var gulp = require('gulp'),
     notify = require('gulp-notify'),
     cache = require('gulp-cache'),
     // livereload = require('gulp-livereload'),
-    del = require('del');
+    del = require('del'),
+	header = require('gulp-header'), // http://ponyfoo.com/articles/choose-grunt-gulp-or-npm
+	pkg = require('gulp/package.json'), 
+	info = '// <%= pkg.name %>@v<%= pkg.version %>, <%= pkg.license %>\n'
+	;
+	
 
 // Styles
 gulp.task('styles', function() {
@@ -40,6 +45,7 @@ gulp.task('js', function() {
     .pipe(gulp.dest('build/js'))
     .pipe(rename({ suffix: '.min' }))
     .pipe(uglify())
+    .pipe(header(info, { pkg : pkg }))
     .pipe(gulp.dest('build/js'))
     .pipe(notify({ message: 'js task complete' }));
 });
