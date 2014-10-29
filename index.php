@@ -1,4 +1,4 @@
-<!doctype html>
+<!doctype html class="no-js">
 
 <head>
 	<title>Site Name</title>
