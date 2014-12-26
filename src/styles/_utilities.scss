@@ -27,7 +27,7 @@
 	@mixin p($val) 				{padding-top:$val;padding-bottom:$val;}		// 'margin sides'
 	@mixin ms($val) 			{margin-left:$val; margin-right:$val;}		// 'padding'
 	@mixin ps($val) 			{padding-left:$val;padding-right:$val;}		// 'padding sides'
-	@mixin dim($width, $height) {width:$width; height:$height;}				// 'dimensions'
+	@mixin dim($width, $height:$width) {width:$width; height:$height;}				// 'dimensions'
 	
 	// Container for element will have to be set to position:relative;
 	@mixin center($width, $height) {
