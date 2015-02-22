@@ -6,28 +6,31 @@
 
 // Load plugins
 var gulp = require('gulp'),
-sass = require('gulp-ruby-sass'),
-autoprefixer = require('gulp-autoprefixer'),
-minifycss = require('gulp-minify-css'),
-jshint = require('gulp-jshint'),
-uglify = require('gulp-uglify'),
-imagemin = require('gulp-imagemin'),
-rename = require('gulp-rename'),
-concat = require('gulp-concat'),
-notify = require('gulp-notify'),
-cache = require('gulp-cache'),
-// livereload = require('gulp-livereload'),
-del = require('del'),
-header = require('gulp-header'), // http://ponyfoo.com/articles/choose-grunt-gulp-or-npm
-pkg = require('gulp/package.json'), 
-info = '// <%= pkg.name %>@v<%= pkg.version %>, <%= pkg.license %>\n'
+	sass = require('gulp-ruby-sass'),
+	autoprefixer = require('gulp-autoprefixer'),
+	minifycss = require('gulp-minify-css'),
+	jshint = require('gulp-jshint'),
+	uglify = require('gulp-uglify'),
+	imagemin = require('gulp-imagemin'),
+	rename = require('gulp-rename'),
+	concat = require('gulp-concat'),
+	notify = require('gulp-notify'),
+	cache = require('gulp-cache'),
+	// livereload = require('gulp-livereload'),
+	del = require('del'),
+	header = require('gulp-header'), // http://ponyfoo.com/articles/choose-grunt-gulp-or-npm
+	pkg = require('gulp/package.json'), 
+	info = '// <%= pkg.name %>@v<%= pkg.version %>, <%= pkg.license %>\n'
 ;
 	
 
 // Styles
 gulp.task('styles', function() {
-	return sass('src/styles/screen.scss', {
+	return sass('src/styles/', {
 		style: 'expanded' // or 'nested'
+	})
+	.on('error', function (err) {
+		console.error('Error!', err.message);
 	})
 	.pipe(autoprefixer('last 2 version', 'safari 5', 'ie 8', 'ie 9', 'opera 12.1', 'ios 6', 'android 4'))
 	.pipe(gulp.dest('build/styles'))

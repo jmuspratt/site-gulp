@@ -25,7 +25,7 @@ var Utilities = {
 		size_string = size_string.replace(/["']/g, "")
 		size_string = size_string.replace("size", "")
 		var	size = parseInt(size_string)
-		return size;
+		return size
 	}
 } // Utilities
 	
@@ -46,7 +46,7 @@ var AnimatedScrolling = {
 		speed: 1200
 	},
 	init: function() {
-		AnimatedScrolling.bind();
+		AnimatedScrolling.bind()
 	},
 	bind: function() {
 		AnimatedScrolling.settings.$animatables.click( function() {
