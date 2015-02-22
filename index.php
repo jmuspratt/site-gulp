@@ -8,13 +8,13 @@
 	<meta name="robots" content="all">
 
 	<!-- css -->
-	<link rel="stylesheet" type="text/css" href="build/styles/screen.css" media="screen" />
+	<link rel="stylesheet" type="text/css" href="/build/styles/screen.css" media="screen" />
 
 	<!-- iphone -->
 	<meta name="viewport" content="width=device-width, initial-scale=1.0" />
 
 	<!--[if lt IE 9]>
-		<link rel="stylesheet" type="text/css" href="build/styles/screen-lt-ie9.css" media="screen" />
+		<link rel="stylesheet" type="text/css" href="/build/styles/screen-lt-ie9.css" media="screen" />
 		<![endif]-->
 	
 		<!-- respond.js -->
@@ -50,7 +50,7 @@
 		</div> <!-- main -->
 		
 		<!-- js -->
-		<script src="build/js/main.min.js"></script>
+		<script src="/build/js/main.min.js"></script>
 	
 	</body>
 	</html>

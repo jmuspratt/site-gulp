@@ -39,6 +39,11 @@
 		margin-left:-($width/2);
 		margin-top:-($height/2);
 	}
+	// 
+	@mixin percent($colcount_span, $guttercount_span, $max_width:$layout_max) {
+		width: percentage( (($col_width * $colcount_span) + ($gutter_width * $guttercount_span) ) / $max_width );
+	}
+	
 	
 //	Based on
 //	http://css-tricks.com/video-screencasts/132-quick-useful-case-sass-math-mixins/
