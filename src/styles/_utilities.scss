@@ -16,62 +16,21 @@
 	@mixin respond($media) 	{@media only screen and (min-width: $media) { @content; } }
 
 
-//	-------------
-//	Layout
-	
-	.clear 		{clear:both;}
-	.cf:after	{content: ""; zoom: 1; font-size:0; display: block; height: 0; clear: both; visibility: hidden;}
-	
-//	Simple shorthands for margins, padding, and width/height properties
-	@mixin m($val) 				{margin-top:$val; margin-bottom:$val;}		// 'margin'
-	@mixin p($val) 				{padding-top:$val;padding-bottom:$val;}		// 'margin sides'
-	@mixin ms($val) 			{margin-left:$val; margin-right:$val;}		// 'padding'
-	@mixin ps($val) 			{padding-left:$val;padding-right:$val;}		// 'padding sides'
-	@mixin dim($width, $height:$width) {width:$width; height:$height;}		// 'dimensions'
-	
-	// Container for element will have to be set to position:relative;
-	@mixin center($width, $height) {
-		position:absolute;
-		left:50%;
-		top:50%;
-		width:$width;
-		height:$height;
-		margin-left:-($width/2);
-		margin-top:-($height/2);
-	}
-	// 
-	@mixin percent($colcount_span, $guttercount_span, $max_width:$layout_max) {
-		width: percentage( (($col_width * $colcount_span) + ($gutter_width * $guttercount_span) ) / $max_width );
-	}
-	
-	
-//	Based on
-//	http://css-tricks.com/video-screencasts/132-quick-useful-case-sass-math-mixins/
-	@mixin grid($itemsPerRow, $marginRight) {
-		float:left;
-		$itemsPerRowLessOne: ($itemsPerRow - 1);
-		$total_margin: ($itemsPerRowLessOne) * $marginRight;
-		width:((99.5 - $total_margin) / $itemsPerRow);
-		// set margin-right on nth-of-type(n) to match CSS specificity of next line
-		&:nth-of-type(n) 						{margin-right: $marginRight; clear:none;}
-		margin-right: $marginRight;
-		&:nth-of-type(#{$itemsPerRow}n) 		{margin-right:0; clear:none;}
-		&:nth-of-type(#{$itemsPerRow}n+1)		{clear:both;}
-	}
+
 	
 //	Background image with no-svg fallback (assumes Modernizr)
-	@mixin bg_image($filename, $type:svg) {
+	@mixin bg-image($filename, $type:svg) {
 		@if $type == 'svg' {
-			background-image: url('#{$img_path}#{$filename}.svg');
-			html.no-svg & {background-image: url('#{$img_path}#{$filename}.png');}	
+			background-image: url('#{$img-path}#{$filename}.svg');
+			html.no-svg & {background-image: url('#{$img-path}#{$filename}.png');}	
 		}
 		@else {
-			background-image: url('#{$img_path}#{$filename}.#{$type}');
+			background-image: url('#{$img-path}#{$filename}.#{$type}');
 		}
 		background-repeat: no-repeat;
 	}
  
-	@mixin bg_color($r, $g, $b, $a) {
+	@mixin bg-color($r, $g, $b, $a) {
 		$rgba: rgba($r, $g, $b, $a);
 	 	$ie-hex-str: ie-hex-str($rgba);
 	 	background-color: transparent;

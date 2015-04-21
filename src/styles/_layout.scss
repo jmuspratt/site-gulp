@@ -1,0 +1,97 @@
+
+//	-------------
+//	Layout
+	
+.clear 		{clear:both;}
+.cf:after	{content: ""; zoom: 1; font-size:0; display: block; height: 0; clear: both; visibility: hidden;}
+	
+//	Simple shorthands for margins, padding, and width/height properties
+@mixin m($val) 				{margin-top:$val; margin-bottom:$val;}		// 'margin'
+@mixin p($val) 				{padding-top:$val;padding-bottom:$val;}		// 'margin sides'
+@mixin ms($val) 			{margin-left:$val; margin-right:$val;}		// 'padding'
+@mixin ps($val) 			{padding-left:$val;padding-right:$val;}		// 'padding sides'
+@mixin dim($width, $height:$width) {width:$width; height:$height;}		// 'dimensions'
+
+	
+// Container for centered element must be set to position:relative;
+@mixin center($width, $height) {
+	position:absolute;
+	left:50%;
+	top:50%;
+	width:$width;
+	height:$height;
+	margin-left:-($width/2);
+	margin-top:-($height/2);
+}
+
+
+	
+	
+//	Floatgrid based on http://css-tricks.com/video-screencasts/132-quick-useful-case-sass-math-mixins/
+@mixin floatgrid($itemsPerRow, $marginRight) {
+	float:left;
+	$itemsPerRowLessOne: ($itemsPerRow - 1);
+	$total_margin: ($itemsPerRowLessOne) * $marginRight;
+	width:((99.5 - $total_margin) / $itemsPerRow);
+	// set margin-right on nth-of-type(n) to match CSS specificity of next line
+	&:nth-of-type(n) 						{margin-right: $marginRight; clear:none;}
+	margin-right: $marginRight;
+	&:nth-of-type(#{$itemsPerRow}n) 		{margin-right:0; clear:none;}
+	&:nth-of-type(#{$itemsPerRow}n+1)		{clear:both;}
+}
+	
+
+
+
+//	-------------
+// 	Grid System
+	
+// Grid config
+$grid-max: 1336px;
+$grid-col-size: 82px;
+$grid-gut-size: 32px;
+	
+	
+// Utility classes
+.pad {
+	padding: $grid-gut-size;
+}
+
+.pad-horiz {
+	padding-left: $grid-gut-size;
+	padding-right: $grid-gut-size;
+}
+
+.pad-vert {
+	padding-top: $grid-gut-size;
+	padding-bottom: $grid-gut-size;
+}
+	
+// Functions
+
+@function col($col-count:1) {
+	@return $col-count*$grid-col-size;
+}
+
+@function gut($gut-count:1) {
+	@return $gut-count*$grid-gut-size;
+}
+	
+// Mixins
+@mixin span($col-count: 6, $gut-count: $col-count - 1, $context: $grid-max) {
+	width: percentage(	( ($grid-col-size * $col-count) + ($grid-gut-size * $gut-count) ) / $context	);
+}
+	
+@mixin col($col-count:6, $float:left) {
+	@include span($col-count);
+	float: $float;
+}
+
+@mixin prepend($col-count: 1, $gut-count: $col-count,$context: $grid-max) {
+	margin-left: percentage((($grid-col-size * $col-count)+($grid-gut-size * $gut-count))/$context);
+}
+
+@mixin append($col-count: 1, $gut-count: $col-coun,$context: $grid-max) {
+	margin-right: percentage((($grid-col-size * $col-count)+($grid-gut-size * $gut-count))/$context);
+}
+	

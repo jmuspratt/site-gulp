@@ -46,6 +46,16 @@
 		
 		<div id="main" class="main" role="main">
 		
+		
+		<section class="test">
+			<div class="mod mod1 pad">
+				<p>Module 1</p>
+			</div>
+			
+			<div class="mod mod2 pad">
+				<p>Module 2</p>
+			</div>
+		</section>
 
 		</div> <!-- main -->
 		

@@ -3,20 +3,43 @@
 @import "_utilities";
 @import "_normalize";
 @import "_customresets";
+@import "_layout";
 @import "_breakpointflags.scss";
 
 
-	body 	{font:12px/18px $sans; background:#fff;}
+	body 			{font:12px/18px $sans; background:#fff;}
+	body, body * 	{box-sizing:border-box;}
 
 	img 	{max-width:100%; display:block; border:0;}
 
-	.main-header, .main 	{padding:0 5%; max-width:1200px;margin:0 auto;}
-	.main-header 			{padding:20px 2%; }
 
 	
-	.main {padding-top:20px;}
+	.main {}
 	
 	a 	{color: gray;}
 	
-	ul {list-style:none; margin-left:0px;}
+	ul {list-style:none; margin:0px; padding:0;}
+
+	
+	.main-header {
+		padding-top:30px;
+		nav li {display:inline-block; margin-right:gut(1);}
+	}
+	.test, .main-header {
+		margin: 0 auto;
+		max-width:$grid-max;
+	}
+	
+	
+	.test {margin-top:30px;}
+	
+	.mod {margin-bottom:gut(1);}
+	.mod1 {background:#eee;}
+	.mod2 {background:#eaeaea;}
+	
+	@include respond($size5) {
+		.mod1 {@include col(6,left);}
+		.mod2 {@include col(6,right);}
+	
+	}
 	

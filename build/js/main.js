@@ -31,7 +31,6 @@ var Utilities = {
 	
 	
 	
-	
 //	+++++++++++++++++++++++++++++++++++++
 //	Store each feature as an object literal with settings / init / bind / *component functions* pattern. We can use jQuery selectors/objects in each object's settings parameters (outside of document.ready), because this script file loads at the bottom of the page and all DOM elements are available. Based on http://css-tricks.com/how-do-you-structure-javascript-the-module-pattern-edition/
 //	+++++++++++++++++++++++++++++++++++++
